@@ -3,6 +3,7 @@
 import avatarImages from "../avatars/importers"
 import useChat from "../hooks/useChat"
 
+
 function Chat() {
 
   const { handleKeyPress, users,
@@ -80,7 +81,7 @@ function Chat() {
                     <div className="flex-grow-1">
                       <div className="d-flex justify-content-between align-items-center">
                         <h6 className="mb-0 text-dark">{contact.name}</h6>
-                        
+
                       </div>
                       <div className="d-flex justify-content-between align-items-center mt-1">
                         <p className="mb-0 text-muted small text-truncate" style={{ maxWidth: "200px" }}>

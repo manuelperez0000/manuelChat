@@ -1,0 +1,1 @@
+export const serverUri = "https://manuelchatbackend.onrender.com"

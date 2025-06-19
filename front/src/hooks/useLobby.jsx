@@ -1,4 +1,4 @@
-const serverUrl = "http://localhost:3000/api/v1"
+import { serverUri } from "../serverUri"
 import axios from "axios"
 import { useState } from "react"
 import { useNavigate } from "react-router-dom"
@@ -26,7 +26,7 @@ const useLobby = () => {
 
 
         try {
-            const response = await axios.post(serverUrl + "/users", userData)
+            const response = await axios.post(serverUri + "/api/users", userData)
             console.log("User created:", response.data)
 
             localStorage.setItem("user", JSON.stringify(response.data))
