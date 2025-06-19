@@ -1,6 +1,6 @@
 const Loading = ({loading}) => {
     if(loading) return (
-        <div className="loading-bg min-vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#00000055" }}>
+        <div className="loading-bg min-vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#000000cc" }}>
             <div className="container">
                 <div className="row justify-content-center">
                     <div className="col-md-6 text-center">

@@ -1,45 +1,17 @@
-const serverUrl = "http://localhost:3000/api/v1"
-import { useState } from "react"
+import useLobby from "../hooks/useLobby"
 import avatarImages from "../avatars/importers"
-import axios from "axios"
-import { useNavigate } from "react-router-dom"
+import Loading from "../components/Loading"
 
 export default function Home() {
-  
-  const navigate = useNavigate()
-  const [selectedAvatar, setSelectedAvatar] = useState(null)
-  const [username, setUsername] = useState("")
 
-  const handleKeyPress = (e) => {
-    if (e.key === "Enter") {
-      handleContinue()
-    }
-  }
-
-  const login = async () => {
-    if (!selectedAvatar || !username.trim()) return
-
-    const userData = {
-      name: username.trim(),
-      avatar: selectedAvatar.id
-    }
-
-    
-    try {
-      const response = await axios.post(serverUrl + "/users", userData)
-      console.log("User created:", response.data)
-      
-      localStorage.setItem("user", JSON.stringify(response.data))
-
-      navigate("/chat")
-
-    } catch (error) {
-      console.error("Error creating user:", error)
-    }
-  }
+  const { selectedAvatar, setSelectedAvatar,
+    username, setUsername,
+    handleKeyPress,
+    login, loading } = useLobby()
 
   return (
     <div className="min-vh-100 d-flex align-items-center justify-content-center" style={{ backgroundColor: "#f8f9fa" }}>
+      {loading && <Loading loading={loading} />}
       <div className="container p-4">
         <div className="row justify-content-center">
           <div className="col-12 col-md-8 col-lg-6">
@@ -86,7 +58,7 @@ export default function Home() {
                           }}
                         >
                           <img src={avatar.img} className="avatarImg" alt="" />
-                          
+
                           {selectedAvatar?.id === avatar.id && (
                             <div
                               className="position-absolute top-0 end-0 bg-success rounded-circle d-flex align-items-center justify-content-center"
@@ -134,7 +106,7 @@ export default function Home() {
                       }}
                     />
                   </div>
-                  
+
                 </div>
 
                 {/* Preview */}
